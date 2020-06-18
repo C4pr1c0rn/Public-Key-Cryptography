@@ -1,5 +1,5 @@
 from math import log2, ceil
-from random import SystemRandom
+from secrets import SystemRandom
 
 def randInt(n):
     cryptogen = SystemRandom()
@@ -94,16 +94,18 @@ def isPrime(n,t):
 
 
 def randPrime(k):
-    cryptogen = SystemRandom()
     p = 0
     if(k==2):
         while(p <= 1):
-            p = cryptogen.getrandbits(k)
+            p = SystemRandom().getrandbits(1)
+            mask = 1 << 1
+            p |= mask
         return p
-    while(not isPrime(p)):
-        while(p < pow(2,k)):
-            #Fehlt nur gerade checken und append 1 bit
-            p = cryptogen.getrandbits(k)
+    while(not isPrime(p, 40)):
+        p = SystemRandom().getrandbits(k-2)
+        p |= 1
+        mask = 1 << k
+        p |= mask
     return p
 
 def modExp(x,y,n):

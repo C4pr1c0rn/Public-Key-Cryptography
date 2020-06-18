@@ -40,3 +40,17 @@ print("modexp(2,7,11)",helper.modExp(2,7,11))
 print("modexp(5,17,11)",helper.modExp(5,17,11))
 print("modexp(8,3,11)",helper.modExp(8,3,11))
 print("modexp(4,8,11)",helper.modExp(4,8,11))
+
+
+
+print("randprime", helper.randPrime(8))
+print("randprime", helper.randPrime(40))
+print("randprime", helper.randPrime(8))
+
+print("randrelprime", helper.ranRelPrime(9))
+print("randrelprime", helper.ranRelPrime(8))
+print("randrelprime", helper.ranRelPrime(40))
+
+
+print("modexp(4,8,11)",helper.modExp(2,3,15))
+print("modexp(4,8,11)",helper.modExp(8,3,15))
