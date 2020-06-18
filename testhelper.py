@@ -45,7 +45,7 @@ print("modexp(4,8,11)",helper.modExp(4,8,11))
 
 print("randprime", helper.randPrime(8))
 print("randprime", helper.randPrime(40))
-print("randprime", helper.randPrime(8))
+print("randprime", helper.randPrime(3))
 
 print("randrelprime", helper.ranRelPrime(9))
 print("randrelprime", helper.ranRelPrime(8))
@@ -54,3 +54,17 @@ print("randrelprime", helper.ranRelPrime(40))
 
 print("modexp(4,8,11)",helper.modExp(2,3,15))
 print("modexp(4,8,11)",helper.modExp(8,3,15))
+
+
+print("getRandomSafeprime ", helper.getRandSafePrime(4))
+print("getRandomSafeprime ", helper.getRandSafePrime(5))
+print("getRandomSafeprime ", helper.getRandSafePrime(11))
+
+
+
+print("findgenSubgroup ", helper.findGenSubGroup(11,5))
+print("findgenSubgroup ", helper.findGenSubGroup(11,5))
+print("findgenSubgroup ", helper.findGenSubGroup(11,5))
+
+
+print("modexp(4,8,11)",helper.modExp(464,359,719))

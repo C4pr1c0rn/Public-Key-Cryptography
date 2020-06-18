@@ -1,6 +1,8 @@
 from math import log2, ceil
 from secrets import SystemRandom
 
+PrimAcc = 40
+
 def randInt(n):
     cryptogen = SystemRandom()
     k = log2(n)
@@ -12,6 +14,7 @@ def randInt(n):
         r = cryptogen.getrandbits(k)
     return  r
 
+#The extended Euclidean Algorithm to find the GCD and multiplicative Inverse
 def extEuclid(a,b):
     r = b % a
     q = int(b/a)
@@ -50,12 +53,13 @@ def randEl(g,q,n):
 #The factors of q have to been known
 def isGen(g,q,factors, n):
     for factor in factors:
-        qi = q/factor
+        qi = int(q/factor)
         if pow(g,qi,n) == 1:
             return False
     return True
 
 
+#Find R and U that n-1 = 2^r * u
 def findRU(n):
     r = 0
     u = n-1
@@ -66,6 +70,7 @@ def findRU(n):
         print("n-1",n,"r",r,"u",u)
     return (r,u)
 
+#The famous Rabin-Miller Primality Test
 def isComposite(a,n):
     if(n<3): 
         return False
@@ -80,6 +85,7 @@ def isComposite(a,n):
         x = pow(x,2,n)
     return True
 
+#Rabin Miller Primality Test
 def isPrime(n,t):
     if(n==2):
         return True
@@ -92,7 +98,7 @@ def isPrime(n,t):
             return False
     return True
 
-
+#Finding Random Prime numbers
 def randPrime(k):
     p = 0
     if(k==2):
@@ -101,13 +107,14 @@ def randPrime(k):
             mask = 1 << 1
             p |= mask
         return p
-    while(not isPrime(p, 40)):
+    while(not isPrime(p, PrimAcc)):
         p = SystemRandom().getrandbits(k-2)
         p |= 1
-        mask = 1 << k
+        mask = 1 << (k-1)
         p |= mask
     return p
 
+#Fast modular exponentiation --> Square Multiply Algorithm
 def modExp(x,y,n):
     if(y==0):
         return 1
@@ -115,3 +122,19 @@ def modExp(x,y,n):
         return modExp(x*x %n, y/2 % n,n)
     else:
         return (x*modExp(x,y-1,n)) % n
+
+#Find primitive root modulo aka. Generator for a group of order q
+def getRandSafePrime(k):
+    p = randPrime(k)
+    q= int((p-1)/2)
+    while(not isPrime(q,PrimAcc)):
+        p = randPrime(k)
+        q= int((p-1)/2)
+    return (p,q)
+
+#Find a Generator of a subgroup
+def findGenSubGroup(p,q):
+    for i in range(2,q):
+        if(pow(i,q,p) == 1):
+            return i
+    return None
