@@ -33,3 +33,15 @@ def dec(c, sk):
     (n,d) = sk
     return modExp(c,d,n)
     
+def sign(sk,m):
+    (n,d) = sk
+    s = modExp(m,d,n)
+    return s
+
+def verify(pk,m,s):
+    (n,e) = pk
+    ms = modExp(s,e,n)
+    if(ms==m):
+        return 1
+    else:
+        return 0

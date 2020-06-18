@@ -1,4 +1,4 @@
-from RSA import keyGen, enc, dec
+from RSA import keyGen, enc, dec, sign, verify
 
 #(pk,sk) = keyGen(13)
 
@@ -20,3 +20,8 @@ result = dec(c,sk)
 print("Encrypt message ", m)
 print("Ciphertext ", c)
 print("result ", result)
+
+s = sign(sk,m)
+print(s)
+print("Sucess", verify(pk,m,s))
+print("Fail",verify(pk,13,s))

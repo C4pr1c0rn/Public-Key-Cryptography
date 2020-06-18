@@ -19,5 +19,5 @@ def dec(sk, c, p, q, g):
     (a,b) = c
     s = modExp(a,sk,p)
     m = (b*modExp(s,p-2,p)) % p
-    #m = b*(modExp(a,multInv(sk,p),p)) %p
+    #m = b*(modExp(a,multInv(sk,p),p)) % p
     return m
