@@ -33,7 +33,7 @@ def multInv(a,b):
     return X % b
 
 #Generating random elements of Z*n
-def ranRelPrime(n):
+def randRelPrime(n):
     r = randInt(n)
     while(gcd(r,n) != 1):
         r = randInt(n)
@@ -41,7 +41,7 @@ def ranRelPrime(n):
 
 #Generating random elements of Gq element of Zp*
 def randQuadRes(p):
-    r = ranRelPrime(p)
+    r = randRelPrime(p)
     return r*r % p
 
 #Generating random group elements

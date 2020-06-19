@@ -1,4 +1,4 @@
-from helper import randPrime, ranRelPrime, multInv, modExp
+from helper import randPrime, randRelPrime, multInv, modExp
 
 def keyGen(k):
     p=0
@@ -15,7 +15,7 @@ def keyGen(k):
     order = (p-1) * (q-1)
     print("Calculate order ", order)
 
-    e = ranRelPrime(order)
+    e = randRelPrime(order)
     print("Calculate public key value e ", e)
 
     d = multInv(e, order)

@@ -47,9 +47,9 @@ print("randprime", helper.randPrime(8))
 print("randprime", helper.randPrime(40))
 print("randprime", helper.randPrime(3))
 
-print("randrelprime", helper.ranRelPrime(9))
-print("randrelprime", helper.ranRelPrime(8))
-print("randrelprime", helper.ranRelPrime(40))
+print("randrelprime", helper.randRelPrime(9))
+print("randrelprime", helper.randRelPrime(8))
+print("randrelprime", helper.randRelPrime(40))
 
 
 print("modexp(4,8,11)",helper.modExp(2,3,15))
